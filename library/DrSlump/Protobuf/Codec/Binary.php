@@ -232,6 +232,10 @@ class Binary implements Protobuf\CodecInterface
             $wire = $key & 0x7;
             $tag = $key >> 3;
 
+            if ($wire === self::WIRE_GROUP_START || $wire === self::WIRE_GROUP_END)) {
+                continue;
+            }
+
             // Find the matching field for the tag number
             if (!isset($fields[$tag])) {
                 $data = $this->decodeUnknown($reader, $wire);
