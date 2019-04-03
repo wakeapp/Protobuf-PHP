@@ -232,7 +232,7 @@ class Binary implements Protobuf\CodecInterface
             $wire = $key & 0x7;
             $tag = $key >> 3;
 
-            if ($wire === self::WIRE_GROUP_START || $wire === self::WIRE_GROUP_END) {
+            if ($wire === self::WIRE_GROUP_START || $wire === self::WIRE_GROUP_END || $wire > 5) {
                 continue;
             }
 
